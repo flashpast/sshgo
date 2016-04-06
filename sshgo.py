@@ -42,7 +42,9 @@ def check_server_name(server_name):
 def ssh(server_name):
     check_server_name(server_name)
     server = servers[server_name]
-    command = "sshpass -p %s ssh -p %s %s@%s" % (server["password"], server["port"], server["user"], server["server"])
+    command = "sshpass -p %s ssh -o StrictHostKeyChecking=no -p %s %s@%s" % (server["password"], 
+                                                                            server["port"], server["user"], 
+                                                                            server["server"])
     os.system(command)
 
 
